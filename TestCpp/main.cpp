@@ -36,12 +36,13 @@ int main() {
         cout << "Could not read file " << fileName << endl;
     }
     
+    Person someoneElse = {};
     inFile.open(fileName,ios::binary);
     if(inFile.is_open())
     {
-       inFile.read(reinterpret_cast<char *>(&someone), sizeof(Person));
+       inFile.read(reinterpret_cast<char *>(&someoneElse), sizeof(Person));
         
-        cout << "name : " << someone.name << " - age : " << someone.age << " - height : " << someone.height << endl;
+        cout << "name : " << someoneElse.name << " - age : " << someoneElse.age << " - height : " << someoneElse.height << endl;
        inFile.close();
     }
     else
