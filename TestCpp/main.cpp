@@ -7,49 +7,44 @@
 //
 
 #include <iostream>
-#include <fstream>
+#include <vector>
+
 using namespace std;
 
-#pragma pack(push,1)
-struct Person{
-    char name[50];
-    int age;
-    double height;
-};
-#pragma pack(pop)
-
 int main() {
-    string fileName = "test.bin";
-    ofstream outFile;
-    ifstream inFile;
+    vector<string>strings;
+ 
+    strings.push_back("one");
+    strings.push_back("two");
+    strings.push_back("three");
     
-    Person someone = {"Frodo",220,0.8};
+    cout << strings[2] << endl;
+    cout << strings.size() << endl;
     
-    outFile.open(fileName,ios::binary);
-    if(outFile.is_open())
+    for(int i=0;i<strings.size();i++)
     {
-       outFile.write(reinterpret_cast<char *>(&someone), sizeof(Person));
-       outFile.close();
+        cout << strings[i] << endl;
     }
-    else
+    cout << endl;
+    for(vector<string>::iterator it = strings.begin();it != strings.end();it++)
     {
-        cout << "Could not read file " << fileName << endl;
+     cout << *it << endl;
     }
     
-    Person someoneElse = {};
-    inFile.open(fileName,ios::binary);
-    if(inFile.is_open())
+    cout << endl;
+    vector<int>entiers;
+    
+    entiers.push_back(10);
+    entiers.push_back(20);
+    entiers.push_back(50);
+    entiers.push_back(7);
+    entiers.push_back(8);
+    entiers.push_back(854);
+    
+    for(vector<int>::iterator it=entiers.begin();it!=entiers.end();it++)
     {
-       inFile.read(reinterpret_cast<char *>(&someoneElse), sizeof(Person));
-        
-        cout << "name : " << someoneElse.name << " - age : " << someoneElse.age << " - height : " << someoneElse.height << endl;
-       inFile.close();
+        cout << *it << endl;
     }
-    else
-    {
-        cout << "Could not create file " << fileName << endl;
-    }
-      
     
     return 0;
 }
