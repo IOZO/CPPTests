@@ -8,49 +8,47 @@
 
 #include <iostream>
 #include <fstream>
-
 using namespace std;
 
-int main(int argc, const char * argv[]) {
-   
+#pragma pack(push,1)
+struct Person{
+    char name[50];
+    int age;
+    double height;
+};
+#pragma pack(pop)
+
+int main() {
+    string fileName = "test.bin";
     ofstream outFile;
-    string fileName ="testcpp.txt";
+    ifstream inFile;
     
-    outFile.open(fileName);
+    Person someone = {"Frodo",220,0.8};
+    
+    outFile.open(fileName,ios::binary);
     if(outFile.is_open())
     {
-        outFile << "Hello there" << endl;
-        outFile << 12345 << endl;
-        outFile.close();
+       outFile.write(reinterpret_cast<char *>(&someone), sizeof(Person));
+       outFile.close();
+    }
+    else
+    {
+        cout << "Could not read file " << fileName << endl;
+    }
+    
+    inFile.open(fileName,ios::binary);
+    if(inFile.is_open())
+    {
+       inFile.read(reinterpret_cast<char *>(&someone), sizeof(Person));
         
-        cout << "File created"<<endl;
-        
+        cout << "name : " << someone.name << " - age : " << someone.age << " - height : " << someone.height << endl;
+       inFile.close();
     }
     else
     {
         cout << "Could not create file " << fileName << endl;
-        return -1;
     }
-    
-    // Read File
-    ifstream inFile;
-    inFile.open(fileName);
-    
-    if(inFile.is_open())
-    {
-        string line;
-        while(inFile){
-            getline(inFile,line);
-            cout << line << endl;
-        }
-        inFile.close();
-    }
-    else
-    {
-        cout << "Could not open file " << fileName << " for reading" << endl;
-        return -1;
-    }
-    
+      
     
     return 0;
 }
