@@ -7,32 +7,50 @@
 //
 
 #include <iostream>
+#include <fstream>
+
 using namespace std;
 
-class MyException : public exception{
-public:
-    virtual const char* what() const throw(){
-        return "Something bad happened";
-    }
-};
-
-class Test{
-public:
-    void goesWrong() {
-        throw MyException();
-    }
-};
-
 int main(int argc, const char * argv[]) {
-    Test test;
+   
+    ofstream outFile;
+    string fileName ="testcpp.txt";
     
-    try{
-        test.goesWrong();
-    }catch(MyException &e)
+    outFile.open(fileName);
+    if(outFile.is_open())
     {
-        cout << "Cought exception " << e.what() << endl;
+        outFile << "Hello there" << endl;
+        outFile << 12345 << endl;
+        outFile.close();
+        
+        cout << "File created"<<endl;
+        
+    }
+    else
+    {
+        cout << "Could not create file " << fileName << endl;
+        return -1;
     }
     
-    cout << "Still running" << endl;
+    // Read File
+    ifstream inFile;
+    inFile.open(fileName);
+    
+    if(inFile.is_open())
+    {
+        string line;
+        while(inFile){
+            getline(inFile,line);
+            cout << line << endl;
+        }
+        inFile.close();
+    }
+    else
+    {
+        cout << "Could not open file " << fileName << " for reading" << endl;
+        return -1;
+    }
+    
+    
     return 0;
 }
