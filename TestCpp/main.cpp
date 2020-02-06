@@ -7,46 +7,43 @@
 //
 
 #include <iostream>
-#include <list>
+#include <map>
 
 using namespace std;
 
 int main() {
 
-    list<int> numbers;
+    map<string,int> ages;
     
-    numbers.push_back(1);
-    numbers.push_back(2);
-    numbers.push_back(3);
-    numbers.push_front(0);
-    
-    list<int>::iterator it=numbers.begin();
-    it++;
-    numbers.insert(it,100);
-    cout << "Elt : " << *it << endl;
-    
-    list<int>::iterator eraseIt=numbers.begin();
-    eraseIt++;
-    cout << "Elt to delete : " << *eraseIt << endl;
-    eraseIt = numbers.erase(eraseIt);
+    ages["Mike"] = 40;
+    ages["Raj"] = 20;
+    ages["Vicky"] = 30;
 
-    for(list<int>::iterator it=numbers.begin();it != numbers.end();it++)
-       {
-           if(*it == 2){
-               numbers.insert(it,1234);
-           }
-           
-           if(*it == 1){
-               it = numbers.erase(it);
-           }else
-           {
-               it++;
-           }
-       }
+    pair<string,int> addToMap("Peter",100);
+    ages.insert(addToMap);
     
-    for(list<int>::iterator it=numbers.begin();it != numbers.end();it++)
+    ages["Mike"] = 85;
+    
+    cout << ages["Raj"] << endl;
+    if(ages.find("Vicky") != ages.end())
     {
-        cout << *it << endl;
+        cout << "Found Vicky" << endl;
     }
+    else
+    {
+        cout << "Key not found"<<endl;
+    }
+    
+    for(map<string,int>::iterator it=ages.begin();it != ages.end();it++)
+       {
+           pair<string,int> age = *it;
+           cout << age.first<<": "<<age.second<<endl;
+       }
+    cout <<endl;
+    for(map<string,int>::iterator it=ages.begin();it != ages.end();it++)
+    {
+        cout << it->first<<": "<<it->second<<endl;
+    }
+    
     return 0;
 }
