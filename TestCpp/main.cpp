@@ -12,38 +12,13 @@
 using namespace std;
 
 int main() {
-    vector<string>strings;
- 
-    strings.push_back("one");
-    strings.push_back("two");
-    strings.push_back("three");
-    
-    cout << strings[2] << endl;
-    cout << strings.size() << endl;
-    
-    for(int i=0;i<strings.size();i++)
-    {
-        cout << strings[i] << endl;
-    }
-    cout << endl;
-    for(vector<string>::iterator it = strings.begin();it != strings.end();it++)
-    {
-     cout << *it << endl;
-    }
-    
-    cout << endl;
-    vector<int>entiers;
-    
-    entiers.push_back(10);
-    entiers.push_back(20);
-    entiers.push_back(50);
-    entiers.push_back(7);
-    entiers.push_back(8);
-    entiers.push_back(854);
-    
-    for(vector<int>::iterator it=entiers.begin();it!=entiers.end();it++)
-    {
-        cout << *it << endl;
+    vector<vector<int>> grid(3,vector<int>(4,5));
+
+    for(int row=0;row<grid.size();row++){
+        for(int col=0;col<grid[row].size();col++){
+            cout << grid[row][col] << flush;
+        }
+        cout << endl;
     }
     
     return 0;
