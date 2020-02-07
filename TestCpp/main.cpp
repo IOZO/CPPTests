@@ -7,54 +7,78 @@
 //
 
 #include <iostream>
-#include <map>
+#include <set>
 
 using namespace std;
 
-class Person{
 
-    private:
+class Test
+{
+    int id;
     string name;
-    int age;
     
     public:
-    Person():name(""), age(0)
+    Test():id(0),name("")
     {
-        
     }
     
-    Person(const Person &other){
-        cout << "Copy constructor invoked" << endl;
-        name = other.name;
-        age = other.age;
-    }
-    
-    Person(string name,int age):name(name),age(age)
+    Test(int id, string name):id(id),name(name)
     {
-        
+    }
+                                 
+    void Print() const
+    {
+        cout << id << ": " << name << endl;
     }
     
-    void print(){
-        cout << name << ": " << age << endl;
+    bool operator<(const Test &other) const {
+        return name < other.name;
     }
-};
-
+ };
 
 int main() {
 
-    map<int,Person> people;
+    set<int> numbers;
     
-    people[0] = Person("Mike",40);
-    people[1] = Person("Vicky",28);
-    people[2] = Person("Raj",31);
+    numbers.insert(20);
+    numbers.insert(50);
+    numbers.insert(80);
+    numbers.insert(75);
     
-    people.insert(make_pair(55,Person("Bob",45)));
-    people.insert(make_pair(7,Person("Sue",52)));
     
-    for(map<int,Person>::iterator it=people.begin();it!=people.end();it++)
+    for(set<int>::iterator it=numbers.begin();it!=numbers.end();it++)
     {
-        cout << it->first << ": " << flush;
-        it->second.print();
+        cout << *it << endl;
+    }
+    
+    set<int>::iterator itFind = numbers.find(120);
+    
+    if(itFind != numbers.end())
+    {
+        cout << "120 found in set" << endl;
+    }
+    else
+    {
+        cout << "120 not found in set" << endl;
+    }
+    
+    
+    set<Test> test;
+    
+    Test t1(10,"Mike");
+    Test t2(30,"Joe");
+    Test t3(20,"Sue");
+    Test t4(50,"Joe");
+    
+    
+    test.insert(t1);
+    test.insert(t2);
+    test.insert(t3);
+    test.insert(t4);
+    
+    for(set<Test>::iterator it=test.begin();it!=test.end();it++)
+    {
+        it->Print();
     }
     
     return 0;
