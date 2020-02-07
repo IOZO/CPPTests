@@ -7,79 +7,63 @@
 //
 
 #include <iostream>
-#include <set>
+#include <stack>
+#include <queue>
 
 using namespace std;
 
 
 class Test
 {
-    int id;
     string name;
     
     public:
-    Test():id(0),name("")
+    
+    Test(string name):name(name)
     {
     }
     
-    Test(int id, string name):id(id),name(name)
+    ~Test()
     {
-    }
-                                 
-    void Print() const
-    {
-        cout << id << ": " << name << endl;
+        //cout << "Object destroyed" << endl;
     }
     
-    bool operator<(const Test &other) const {
-        return name < other.name;
+    void print() const
+    {
+        cout << name << endl;
     }
  };
 
 int main() {
 
-    set<int> numbers;
+    stack<Test> testStack;
     
-    numbers.insert(20);
-    numbers.insert(50);
-    numbers.insert(80);
-    numbers.insert(75);
+    testStack.push(Test("Mike"));
+    testStack.push(Test("Joe"));
+    testStack.push(Test("Sue"));
+    testStack.push(Test("Bob"));
     
-    
-    for(set<int>::iterator it=numbers.begin();it!=numbers.end();it++)
+    while(testStack.size() > 0)
     {
-        cout << *it << endl;
-    }
-    
-    set<int>::iterator itFind = numbers.find(120);
-    
-    if(itFind != numbers.end())
-    {
-        cout << "120 found in set" << endl;
-    }
-    else
-    {
-        cout << "120 not found in set" << endl;
+        Test &test = testStack.top();
+        test.print();
+        testStack.pop();
     }
     
     
-    set<Test> test;
+    queue<Test> testQueue;
     
-    Test t1(10,"Mike");
-    Test t2(30,"Joe");
-    Test t3(20,"Sue");
-    Test t4(50,"Joe");
+    testQueue.push(Test("Mike"));
+    testQueue.push(Test("Joe"));
+    testQueue.push(Test("Sue"));
+    testQueue.push(Test("Bob"));
     
-    
-    test.insert(t1);
-    test.insert(t2);
-    test.insert(t3);
-    test.insert(t4);
-    
-    for(set<Test>::iterator it=test.begin();it!=test.end();it++)
+    while(testQueue.size() > 0)
     {
-        it->Print();
+        Test &test = testQueue.front();
+        test.print();
+        testQueue.pop();
     }
-    
+
     return 0;
 }
