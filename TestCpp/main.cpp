@@ -19,6 +19,12 @@ int main()
     cout << c1 << " " << c2 << endl;
     
     cout << 7+c1+8.5+c2 << c1+5 << endl;
+    
+    (c1==c2) ? cout << "les nombres sont identiques" << endl:cout << "les nombres sont différents"<<endl;
+    Complex c3 = c2;
+    (c2==c3) ? cout << "les nombres sont identiques" << endl:cout << "les nombres sont différents"<<endl;
+
+    
     return 0;
 }
 
