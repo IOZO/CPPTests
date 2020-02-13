@@ -20,6 +20,18 @@ void print(T arg)
     cout << arg << endl;
 }
 
+void test(){
+    cout << "hello from test" << endl;
+}
+
+void test2(){
+    cout << "hello from test2" << endl;
+}
+
+void test3(int value){
+    cout << "hello from test3, value = " << value << endl;
+}
+
 int main()
 {
     Complex c1(1,4);
@@ -43,6 +55,15 @@ int main()
     
     print<int>(3);
     print<string>("hello");
+    
+    void (* pTest)() = test;
+    pTest();
+    
+    pTest = test2;
+    pTest();
+    
+    void (* pTest2)(int) = test3;
+    pTest2(5);
     
     return 0;
 }
