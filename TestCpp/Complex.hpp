@@ -36,7 +36,8 @@ namespace iozocpp {
         };
         
         bool operator==(const Complex &other) const;
-        
+        bool operator!=(const Complex &other) const;
+
     };
 
     ostream &operator<<(ostream &out, const Complex &c);

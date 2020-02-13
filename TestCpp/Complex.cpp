@@ -26,7 +26,11 @@ Complex operator+(double d, const Complex &c1){
 }
 
 bool Complex::operator==(const Complex &other) const {
-    return((real == other.real) && (imaginary == other.imaginary));
+    return(real == other.real) && (imaginary == other.imaginary);
+}
+
+bool Complex::operator!=(const Complex &other) const {
+    return !(*this == other);
 }
 
 Complex::Complex(): real(0), imaginary(0){

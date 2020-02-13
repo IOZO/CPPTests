@@ -24,7 +24,10 @@ int main()
     Complex c3 = c2;
     (c2==c3) ? cout << "les nombres sont identiques" << endl:cout << "les nombres sont différents"<<endl;
 
-    
+    (c1!=c2) ? cout << "les nombres sont différents" << endl:cout << "les nombres sont identiques"<<endl;
+    Complex c4 = c2;
+    (c2!=c3) ? cout << "les nombres sont différents" << endl:cout << "les nombres sont identiques"<<endl;
+
     return 0;
 }
 
