@@ -13,6 +13,13 @@
 using namespace std;
 using namespace iozocpp;
 
+
+template <class T>
+void print(T arg)
+{
+    cout << arg << endl;
+}
+
 int main()
 {
     Complex c1(1,4);
@@ -33,6 +40,9 @@ int main()
     
     Test<string> testStr("hello");
     testStr.print();
+    
+    print<int>(3);
+    print<string>("hello");
     
     return 0;
 }
