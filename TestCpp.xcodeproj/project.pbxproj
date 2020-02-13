@@ -28,6 +28,7 @@
 		1EBDE00723EACFD0001D8297 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		1EDF700E23F4413D00613C45 /* Complex.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Complex.cpp; sourceTree = "<group>"; };
 		1EDF700F23F4413D00613C45 /* Complex.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Complex.hpp; sourceTree = "<group>"; };
+		1EDF701223F580AE00613C45 /* Template.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Template.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +64,7 @@
 				1EBDE00723EACFD0001D8297 /* main.cpp */,
 				1EDF700E23F4413D00613C45 /* Complex.cpp */,
 				1EDF700F23F4413D00613C45 /* Complex.hpp */,
+				1EDF701223F580AE00613C45 /* Template.hpp */,
 			);
 			path = TestCpp;
 			sourceTree = "<group>";

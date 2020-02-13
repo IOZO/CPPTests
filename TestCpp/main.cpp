@@ -8,6 +8,7 @@
 
 #include <iostream>
 #include "Complex.hpp"
+#include "Template.hpp"
 
 using namespace std;
 using namespace iozocpp;
@@ -29,6 +30,9 @@ int main()
     (c2!=c3) ? cout << "les nombres sont différents" << endl:cout << "les nombres sont identiques"<<endl;
 
     cout << c1 << " " << *c1 << endl;
+    
+    Test<string> testStr("hello");
+    testStr.print();
     
     return 0;
 }
