@@ -28,6 +28,8 @@ int main()
     Complex c4 = c2;
     (c2!=c3) ? cout << "les nombres sont différents" << endl:cout << "les nombres sont identiques"<<endl;
 
+    cout << c1 << " " << *c1 << endl;
+    
     return 0;
 }
 

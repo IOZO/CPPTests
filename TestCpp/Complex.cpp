@@ -46,6 +46,10 @@ Complex::Complex(const Complex &other){
     imaginary = other.imaginary;
 }
 
+Complex Complex::operator *() const{
+    return Complex(real,-imaginary);
+}
+
 const Complex &Complex::operator=(const Complex &other){
       real = other.real;
       imaginary = other.imaginary;
