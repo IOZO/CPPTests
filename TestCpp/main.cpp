@@ -14,17 +14,11 @@ using namespace iozocpp;
 
 int main()
 {
-    Complex c1;
+    Complex c1(1,4);
+    Complex c2 (4,6);
+    cout << c1 << " " << c2 << endl;
     
-    //cout << "reel " << c1.real << ", imaginary : " << c1.imaginary << endl;
-    Complex c2(1,4);
-    
-    Complex c3 (c1);
-    
-    c1 = c2;
-    
-    cout << c1 << "   " << c3 << endl;
-    
+    cout << 7+c1+8.5+c2 << c1+5 << endl;
     return 0;
 }
 
